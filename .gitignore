@@ -5,6 +5,7 @@
 
 # dependencies
 week1/node-express/node_modules/
+week2/conFusionServer/node_modules
 */node_modules
 /.pnp
 .pnp.js
