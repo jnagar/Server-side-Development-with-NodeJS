@@ -8,26 +8,26 @@ promoRouter.use(bodyParser.json());
 promoRouter.route('/')
 .get((req,res,next) => {
     Promotions.find({})
-    .then((dishes) => {
+    .then((promotions) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(dishes);
+        res.json(promotions);
     }, (err) => next(err))
     .catch((err) => next(err));
 })
 .post((req, res, next) => {
     Promotions.create(req.body)
-    .then((dish) => {
-        console.log('Dish Created ', dish);
+    .then((promo) => {
+        console.log('Promotion Created ', promo);
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(dish);
+        res.json(promo);
     }, (err) => next(err))
     .catch((err) => next(err));
 })
 .put((req, res, next) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /dishes');
+    res.end('PUT operation not supported on /promotions');
 })
 .delete((req, res, next) => {
     Promotions.remove({})
@@ -41,26 +41,26 @@ promoRouter.route('/')
 
 promoRouter.route('/:promoId')
 .get((req,res,next) => {
-    Promotions.findById(req.params.dishId)
-    .then((dish) => {
+    Promotions.findById(req.params.promoId)
+    .then((promo) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(dish);
+        res.json(promo);
     }, (err) => next(err))
     .catch((err) => next(err));
 })
 .post((req, res, next) => {
     res.statusCode = 403;
-    res.end('POST operation not supported on /dishes/'+ req.params.dishId);
+    res.end('POST operation not supported on /promotions/'+ req.params.promoId);
 })
 .put((req, res, next) => {
-    Promotions.findByIdAndUpdate(req.params.dishId, {
+    Promotions.findByIdAndUpdate(req.params.promoId, {
         $set: req.body
     }, { new: true })
-    .then((dish) => {
+    .then((promo) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(dish);
+        res.json(promo);
     }, (err) => next(err))
     .catch((err) => next(err));
 })
