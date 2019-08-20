@@ -4,6 +4,7 @@
 .idea/
 
 # dependencies
+week1/node-express/node_modules/
 */node_modules
 /.pnp
 .pnp.js
