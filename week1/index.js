@@ -8,7 +8,9 @@ const port = 3030;
 const app = express();
 
 const dishRouter = require('./routes/dishRouter');
+const promoRouter = require('./routes/promoRouter');
 app.use('/dishes', dishRouter);
+app.use('/promotions', promoRouter);
 
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
